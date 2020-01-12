@@ -13,6 +13,10 @@ class Nav extends React.Component {
           <Link to='/joblist' className='joblist'>
             Job List
           </Link>
+          {' '}
+          <Link to='/addlisting'>
+            Add Listing
+          </Link>
         </div>
       </nav>
     )

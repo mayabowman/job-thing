@@ -6,7 +6,7 @@ class JobList extends React.Component {
   render() {
     const jobs = dummyStore.jobs
     let jobList = Object.keys(jobs).map((job, i) => (
-      <JobListing key={i} id={i} job={jobs[job]} />
+        <JobListing key={i} id={i} job={jobs[job]} />
     ))
     return (
       <div>

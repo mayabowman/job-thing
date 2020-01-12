@@ -5,6 +5,9 @@ import Landing from './pages/Landing'
 import Register from './pages/Register'
 import Login from './pages/LogIn'
 import JobList from './pages/JobList'
+import AddListing from './pages/AddListing'
+import EditListing from './pages/EditListing'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -29,9 +32,18 @@ function App() {
               path='/joblist'
               component={JobList}
             />
+            <Route
+              path='/addlisting'
+              component={AddListing}
+            />
+            <Route
+              path='/editlisting'
+              component={EditListing}
+            />
           </>
         </Switch>
       </section>
+      <Footer />
     </main>
   )
 }
