@@ -5,7 +5,7 @@ class Footer extends React.Component {
   render() {
     return (
       <footer>
-        <Link to='/'>Job Thing</Link>
+        <Link to='/'>Home</Link>
       </footer>
     )
   }

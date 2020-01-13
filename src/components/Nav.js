@@ -7,7 +7,7 @@ class Nav extends React.Component {
       <nav>
         <div className='nav-container'>
           <Link to='/' className='logo'>
-            Job Thing
+            Home
           </Link>
           {' '}
           <Link to='/joblist' className='joblist'>
