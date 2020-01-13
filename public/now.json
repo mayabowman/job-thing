@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "alias": "mayabowman-job-thing-app",
+  "name": "job-thing-app",
+  "routes": [
+      { "handle": "filesystem" },
+      { "src": "/.*", "dest": "/index.html" }
+  ]
+}
