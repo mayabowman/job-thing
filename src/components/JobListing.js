@@ -5,7 +5,7 @@ import './JobListing.css'
 class JobListing extends React.Component {
   render() {
     return (
-      <Link to={`/jobdetails/${this.props.data}`}>
+      <Link to={`/jobdetails/${this.props.data.id}`}>
         <div className='JobListing'>
           <h2>{this.props.data.company}</h2>
           <h3>{this.props.data.position}</h3>

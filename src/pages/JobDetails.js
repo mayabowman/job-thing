@@ -9,7 +9,7 @@ class JobDetails extends React.Component{
     return (
       <div>
         <div className='JobListing'>
-          <h2>{jobs.company}</h2>
+          <h2>{jobs[0].company}</h2>
           <h3>{jobs.position}</h3>
           <p>{jobs.description}</p>
           <Link to='/editlisting'>

@@ -34,7 +34,7 @@ function App() {
               component={JobList}
             />
             <Route
-              path='/jobdetails'
+              path='/jobdetails/:id'
               component={JobDetails}
             />
             <Route
