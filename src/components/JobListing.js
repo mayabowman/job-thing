@@ -4,19 +4,16 @@ import './JobListing.css'
 
 class JobListing extends React.Component {
   render() {
-    console.log('props', this.props)
     return (
-      <div>
+      <Link to={`/jobdetails/${this.props.data}`}>
         <div className='JobListing'>
           <h2>{this.props.data.company}</h2>
           <h3>{this.props.data.position}</h3>
           <p>{this.props.data.description}</p>
-          <Link to='/editlisting'>
-            <button>Edit</button>
-          </Link>
-          <button>Delete</button>
+          {/* <p>{this.props.data.id}</p> */}
+          {/* <button>See Details</button> */}
         </div>
-      </div>
+      </Link>
     )
   }
 }

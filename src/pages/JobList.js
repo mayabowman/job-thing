@@ -11,10 +11,12 @@ class JobList extends React.Component {
         <h1>Jobs You've Applied For</h1>
         <ul>
           {jobs.map(i => (
-            <JobListing
-              data={i}
-              key={i.id}
-            />
+            <li key={i.id}>
+              <JobListing
+                id={i.id}
+                data={i}
+              />
+            </li>
           ))}
         </ul>
       </div>
