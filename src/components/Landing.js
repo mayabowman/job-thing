@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Landing extends React.Component {
   render() {
@@ -23,4 +23,4 @@ class Landing extends React.Component {
   }
 }
 
-export default Landing
+export default Landing;

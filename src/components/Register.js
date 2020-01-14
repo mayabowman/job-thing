@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Register extends React.Component {
   render() {
@@ -44,4 +44,4 @@ class Register extends React.Component {
   }
 }
 
-export default Register
+export default Register;

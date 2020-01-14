@@ -1,14 +1,14 @@
-import React from 'react'
-import { Route, Switch } from 'react-router-dom'
-import Nav from './components/Nav'
-import Landing from './components/Landing'
-import Register from './components/Register'
-import Login from './components/LogIn'
-import JobList from './components/JobList'
-import JobDetails from './components/JobDetails'
-import AddListing from './components/AddListing'
-import EditListing from './components/EditListing'
-import Footer from './components/Footer'
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import Nav from './components/Nav';
+import Landing from './components/Landing';
+import Register from './components/Register';
+import Login from './components/LogIn';
+import JobList from './components/JobList';
+import JobDetails from './components/JobDetails';
+import AddListing from './components/AddListing';
+import EditListing from './components/EditListing';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -53,4 +53,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

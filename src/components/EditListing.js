@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 class EditListing extends React.Component {
   render() {
@@ -59,4 +59,4 @@ class EditListing extends React.Component {
   }
 }
 
-export default EditListing
+export default EditListing;
