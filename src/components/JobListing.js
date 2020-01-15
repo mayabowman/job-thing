@@ -9,7 +9,7 @@ class JobListing extends React.Component {
         <div className='JobListing'>
           <h2>{this.props.data.company}</h2>
           <h3>{this.props.data.position}</h3>
-          <p>{this.props.data.description}</p>
+          <p>{this.props.data.status}</p>
         </div>
       </Link>
     )
