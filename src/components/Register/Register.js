@@ -1,7 +1,46 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AuthApiService from '../../services/auth-api-service';
 
 class Register extends React.Component {
+  static defaultProps = {
+    location: {},
+    history: {
+      push: () => {},
+    }
+  }
+
+  state = { error: null }
+
+  handleRegistrationSuccess = () => {
+    const { location, history } = this.props
+    const destination = (location.state || {}).from || '/login'
+    history.push(destination)
+  };
+
+  handleSubmit = e => {
+    e.preventDefault()
+    const { user_name, full_name, password } = e.target
+
+    this.setState({ error: null })
+
+    AuthApiService.postUser({
+      user_name: user_name.value,
+      full_name: full_name.value,
+      password: password.value
+    })
+      .then(res => {
+        user_name.value = ''
+        full_name.value = ''
+        password.value = ''
+        this.handleRegistrationSuccess()
+      })
+      .catch(res => {
+        this.setState({ error: res.error })
+        console.log('error', res.error)
+      })
+  };
+
   render() {
     return (
       <div className='Register'>
@@ -9,20 +48,20 @@ class Register extends React.Component {
         <form>
           <div className='form-content'>
             <div>
-              <label htmlFor='username'>Name: </label>
+              <label htmlFor='full_name'>Name: </label>
               <input
                 type='text'
-                id='name'
-                name='name'
+                id='full_name'
+                name='full_name'
                 placeholder='Name'
               />
             </div>
             <div>
-              <label htmlFor='username'>Username: </label>
+              <label htmlFor='user_name'>Username: </label>
               <input
                 type='text'
-                id='username'
-                name='username'
+                id='user_name'
+                name='user_name'
                 placeholder='Username'
               />
             </div>
