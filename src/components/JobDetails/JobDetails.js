@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import dummyStore from '../dummy-store';
+import dummyStore from '../../dummy-store';
 
 class JobDetails extends React.Component{
   render() {

@@ -1,6 +1,6 @@
 import React from 'react';
-import dummyStore from '../dummy-store';
-import JobListing from './JobListing';
+import dummyStore from '../../dummy-store';
+import JobListing from '../JobListing/JobListing';
 
 class JobList extends React.Component {
   render() {
