@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './JobListing.css';
+import UpdateJobContext from '../../contexts/UpdateJobContext';
 
 class JobListing extends React.Component {
+  static contextType = UpdateJobContext
+
   render() {
     return (
       <Link to={`/jobdetails/${this.props.data.id}`}>

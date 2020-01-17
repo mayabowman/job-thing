@@ -1,6 +1,9 @@
 import React from 'react';
+import UpdateJobContext from '../../contexts/UpdateJobContext';
 
 class AddListing extends React.Component {
+  static contextType = UpdateJobContext
+
   render() {
     return (
       <div className='AddListing'>
