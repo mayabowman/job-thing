@@ -37,11 +37,15 @@ class LogIn extends React.Component {
         this.setState({ error: res.error })
       })
   };
+
   render() {
     return (
       <div className='Login'>
         <h1>Login</h1>
-        <form>
+        <form
+          id='log-in'
+          onSubmit={this.handleSubmitJwtAuth}
+        >
           <div className='login__username'>
             <label htmlFor='user_name'>Username: </label>
             <input
