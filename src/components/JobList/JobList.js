@@ -1,5 +1,4 @@
 import React from 'react';
-// import dummyStore from '../../dummy-store';
 import JobListing from '../JobListing/JobListing';
 import UpdateJobContext from '../../contexts/UpdateJobContext';
 import JobsApiService from '../../services/jobs-api-service';
@@ -19,7 +18,9 @@ class JobList extends React.Component {
     let userId = Number(TokenService.getUserId())
     JobsApiService.getJobsForUser(userId)
       .then(data => {
+        console.log('data', data)
         this.context.setJobs(data)
+        console.log('this.context.jobs', this.context.jobs)
       })
       .catch(error => {
         this.setState({
@@ -29,11 +30,10 @@ class JobList extends React.Component {
   }
 
   render() {
-    // const jobs = dummyStore.jobs
     return (
       <div>
         <h1>Jobs You've Applied For</h1>
-        <ul>
+        {/* <ul>
           {this.context.jobs.map(i => (
             <li key={i.id}>
               <JobListing
@@ -42,7 +42,7 @@ class JobList extends React.Component {
               />
             </li>
           ))}
-        </ul>
+        </ul> */}
       </div>
     )
   }
