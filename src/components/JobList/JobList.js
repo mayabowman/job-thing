@@ -34,7 +34,7 @@ class JobList extends React.Component {
     return (
       <div>
         <h1>Jobs You've Applied For</h1>
-        {/* <ul>
+        <ul>
           {this.context.jobs.map(i => (
             <li key={i.id}>
               <JobListing
@@ -43,7 +43,7 @@ class JobList extends React.Component {
               />
             </li>
           ))}
-        </ul> */}
+        </ul>
       </div>
     )
   }
