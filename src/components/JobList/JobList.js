@@ -16,12 +16,9 @@ class JobList extends React.Component {
 
   componentDidMount() {
     let userId = Number(TokenService.getUserId())
-    console.log('userId', userId)
     JobsApiService.getJobsForUser(userId)
       .then(data => {
-        console.log('data', data)
         this.context.setJobs(data)
-        console.log('this.context.jobs', this.context.jobs)
       })
       .catch(error => {
         this.setState({

@@ -17,7 +17,6 @@ const JobsApiService = {
   },
 
   getJobsForUser(user_id) {
-    console.log('user_id', user_id)
     return fetch(`${config.API_ENDPOINT}/jobs/user/${user_id}`, {
       method: 'GET',
       headers: {

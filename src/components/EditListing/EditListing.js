@@ -1,8 +1,73 @@
 import React from 'react';
 import UpdateJobContext from '../../contexts/UpdateJobContext';
+import JobsApiService from '../../services/jobs-api-service';
 
 class EditListing extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      error: null
+    }
+    this.updateJob = this.updateJob.bind(this)
+  }
+
   static contextType = UpdateJobContext
+
+  componentDidMount() {
+    let id = this.props.match.params.id
+    JobsApiService.getJobById(id)
+      .then(data => {
+        this.context.setSingleJob(data)
+      })
+      .catch(error => {
+        this.setState({
+          error: error
+        })
+      })
+  }
+
+  updateJob = (e) => {
+    e.preventDefault()
+    const id = this.props.match.params.id
+    const { company, position, status, description, date_submitted } = e.target
+    let updatedJob = {}
+
+    if (company.value !== '' && company.value !== null) {
+      updatedJob.company = company.value
+    }
+
+    if (position.value !== '' && position.value !== null) {
+      updatedJob.position = position.value
+    }
+
+    if (status.value !== '' && status.value !== null) {
+      updatedJob.status = status.value
+    }
+
+    if (description.value !== '' && description.value !== null) {
+      updatedJob.description = description.value
+    }
+
+    if (date_submitted.value !== '' && date_submitted.value !== null) {
+      updatedJob.date_submitted = date_submitted.value
+    }
+
+    updatedJob.id = id
+
+    JobsApiService.updateJob(id, updatedJob)
+      .then(data => {
+        JobsApiService.getData()
+          .then(data => {
+            this.context.setJobs(data)
+          })
+      })
+      .then(() => {
+        this.props.history.push(`/jobdetails/${id}`)
+      })
+      .catch(error => {
+        this.context.setError(error)
+      })
+  }
 
   render() {
     return (
@@ -15,7 +80,7 @@ class EditListing extends React.Component {
               type='text'
               name='company'
               id='company'
-              placeholder='Company'
+              placeholder={this.context.singleJob.company}
             ></input>
           </div>
           <div>
@@ -24,13 +89,13 @@ class EditListing extends React.Component {
               type='text'
               name='position'
               id='position'
-              placeholder='Position'
+              placeholder={this.context.singleJob.position}
             ></input>
           </div>
           <div>
             <label htmlFor='status'>Status</label>
             <select>
-              <option value=''>Select a Status</option>
+              <option value={this.context.singleJob.status}></option>
               <option value='Application submitted'>Application submitted</option>
               <option value='Phone Interview Scheduled'>Phone Interview Scheduled</option>
               <option value='Phone Interview Completed'>Phone Interview Completed</option>
@@ -46,7 +111,7 @@ class EditListing extends React.Component {
               type='text'
               name='description'
               id='description'
-              placeholder='Description'
+              placeholder={this.context.singleJob.description}
             ></input>
           </div>
           <div>

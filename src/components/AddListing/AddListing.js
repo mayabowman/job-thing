@@ -1,14 +1,47 @@
 import React from 'react';
 import UpdateJobContext from '../../contexts/UpdateJobContext';
+import JobsApiService from '../../services/jobs-api-service';
 
 class AddListing extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      error: null
+    }
+    this.addJob = this.addJob.bind(this)
+  }
+
   static contextType = UpdateJobContext
+
+  addJob = (e) => {
+    e.preventDefault()
+    const date = e.target.date_submitted.value
+    let newJob = {
+      company: e.target.company.value,
+      position: e.target.position.value,
+      status: e.target.status.value,
+      description: e.target.description.value,
+    }
+    if (date !== '' && date !== null) {
+      newJob.date_submitted = date
+    }
+
+    JobsApiService.postJob(newJob)
+      .then(data => {
+        this.context.setJobs(data)
+      })
+      .catch(this.context.setError)
+
+      this.props.history.push('/joblist')
+  }
+
+
 
   render() {
     return (
       <div className='AddListing'>
         <h2>Add a Job Listing</h2>
-        <form>
+        <form onSubmit={(e) => this.addJob(e)}>
           <div>
             <label htmlFor='company'>Company</label>
             <input
@@ -29,7 +62,7 @@ class AddListing extends React.Component {
           </div>
           <div>
             <label htmlFor='status'>Status</label>
-            <select>
+            <select name='status'>
               <option value=''>Select a Status</option>
               <option value='Application submitted'>Application submitted</option>
               <option value='Phone Interview Scheduled'>Phone Interview Scheduled</option>
@@ -50,8 +83,8 @@ class AddListing extends React.Component {
             ></input>
           </div>
           <div>
-            <label htmlFor='date-submitted'>Date Submitted</label>
-            <input type='date' name='date-submitted'></input>
+            <label htmlFor='date_submitted'>Date Submitted</label>
+            <input type='date' name='date_submitted'></input>
           </div>
           <div>
             <input type='submit'></input>

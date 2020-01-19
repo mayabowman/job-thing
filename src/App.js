@@ -105,7 +105,7 @@ class App extends React.Component {
                   component={AddListing}
                 />
                 <Route
-                  path='/editlisting'
+                  path='/editlisting/:id'
                   component={EditListing}
                 />
               </>
