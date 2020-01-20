@@ -30,15 +30,12 @@ class AddListing extends React.Component {
     if (date !== '' && date !== null) {
       newJob.date_submitted = date
     }
-    console.log('newJob.userId',newJob.userId)
     JobsApiService.postJob(newJob)
       .then(data => {
         this.props.history.push('/joblist')
       })
       .catch(this.context.setError)
   }
-
-
 
   render() {
 
