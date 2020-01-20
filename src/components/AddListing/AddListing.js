@@ -1,6 +1,7 @@
 import React from 'react';
 import UpdateJobContext from '../../contexts/UpdateJobContext';
 import JobsApiService from '../../services/jobs-api-service';
+import TokenService from '../../services/token-service';
 
 class AddListing extends React.Component {
   constructor(props) {
@@ -15,12 +16,15 @@ class AddListing extends React.Component {
 
   addJob = (e) => {
     e.preventDefault()
+    const userId = Number(TokenService.getUserId())
     const date = e.target.date_submitted.value
     let newJob = {
       company: e.target.company.value,
       position: e.target.position.value,
       status: e.target.status.value,
       description: e.target.description.value,
+      user_id: userId,
+      date_submitted: e.target.date_submitted.value
     }
     if (date !== '' && date !== null) {
       newJob.date_submitted = date
@@ -38,6 +42,7 @@ class AddListing extends React.Component {
 
 
   render() {
+
     return (
       <div className='AddListing'>
         <h2>Add a Job Listing</h2>

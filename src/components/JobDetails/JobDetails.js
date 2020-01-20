@@ -27,6 +27,7 @@ class JobDetails extends React.Component{
   }
 
   deleteJob = (id) => {
+    this.context.deleteJob(id)
     JobsApiService.deleteJob(id)
       .catch(error => {
         this.context.setError(error)
