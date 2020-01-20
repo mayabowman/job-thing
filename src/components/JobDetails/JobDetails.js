@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import UpdateJobContext from '../../contexts/UpdateJobContext';
 import JobsApiService from '../../services/jobs-api-service';
+import TokenService from '../../services/token-service';
 
 class JobDetails extends React.Component{
   constructor(props) {
@@ -27,11 +28,12 @@ class JobDetails extends React.Component{
   }
 
   deleteJob = (id) => {
-    // const updatedJobs = this.context.jobs.filter(j => {
-    //   return j.id !== id
-    // })
+    const userId = Number(TokenService.getUserId)
     JobsApiService.deleteJob(id)
-      // .then(this.context.setJobs(updatedJobs))
+    JobsApiService.getJobsForUser(userId)
+      .then(data => {
+        this.context.setJobs(data)
+      })
       .then(this.props.history.push('/joblist'))
       .catch(error => {
         this.context.setError(error)
