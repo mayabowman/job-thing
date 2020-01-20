@@ -28,7 +28,7 @@ class JobDetails extends React.Component{
   }
 
   deleteJob = (id) => {
-    const userId = Number(TokenService.getUserId)
+    const userId = Number(TokenService.getUserId())
     JobsApiService.deleteJob(id)
     JobsApiService.getJobsForUser(userId)
       .then(data => {
