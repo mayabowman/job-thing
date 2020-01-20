@@ -45,6 +45,7 @@ const JobsApiService = {
   },
 
   postJob(newJob) {
+    console.log('service newJob', newJob)
     return fetch(`${config.API_ENDPOINT}/jobs`, {
       method: 'POST',
       headers: {

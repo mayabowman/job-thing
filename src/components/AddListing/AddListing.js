@@ -18,6 +18,7 @@ class AddListing extends React.Component {
     e.preventDefault()
     const userId = Number(TokenService.getUserId())
     const date = e.target.date_submitted.value
+    console.log('userId', userId)
     let newJob = {
       company: e.target.company.value,
       position: e.target.position.value,
@@ -29,7 +30,7 @@ class AddListing extends React.Component {
     if (date !== '' && date !== null) {
       newJob.date_submitted = date
     }
-
+    console.log('newJob.userId',newJob.userId)
     JobsApiService.postJob(newJob)
       .then(data => {
         this.context.setJobs(data)
