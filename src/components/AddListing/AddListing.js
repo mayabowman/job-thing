@@ -33,11 +33,9 @@ class AddListing extends React.Component {
     console.log('newJob.userId',newJob.userId)
     JobsApiService.postJob(newJob)
       .then(data => {
-        this.context.setJobs(data)
+        this.props.history.push('/joblist')
       })
       .catch(this.context.setError)
-
-      this.props.history.push('/joblist')
   }
 
 
