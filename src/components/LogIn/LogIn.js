@@ -42,11 +42,17 @@ class LogIn extends React.Component {
     return (
       <div className='Login'>
         <h1>Login</h1>
+
         <form
           id='log-in'
           onSubmit={this.handleSubmitJwtAuth}
         >
           <div className='login__username'>
+          <div className='login__demo-creds'>
+              <strong>
+                Demo credentials: testuser / Thinkful1!
+              </strong>
+            </div>
             <label htmlFor='user_name'>Username: </label>
             <input
               type='text'

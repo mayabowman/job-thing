@@ -34,12 +34,10 @@ class App extends React.Component {
   setSingleJob = (data) => {
     let index
     this.state.jobs.forEach((item, i) => {
-      // debugger
       if (item.id === data.id) {
         index = i
       }
     })
-    // console.log('job', job)
     let jobs = this.state.jobs
     jobs[index] = data
     this.setState({
