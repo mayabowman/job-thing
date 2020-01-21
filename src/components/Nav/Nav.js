@@ -30,6 +30,22 @@ class Nav extends React.Component {
     )
   }
 
+  toJobList() {
+    return (
+      <Link to={'/joblist'} className='text-link'>
+        Job Thing<span className='keep-white'>.</span>
+      </Link>
+    )
+  }
+
+  toLandingPage() {
+    return (
+      <Link to={'/'} className='text-link'>
+        Job Thing<span className='keep-white'>.</span>
+      </Link>
+    )
+  }
+
   componentDidMount() {
     TokenService.onChange(() => {
       this.forceUpdate()
@@ -40,9 +56,12 @@ class Nav extends React.Component {
     return (
       <nav>
         <div className='nav-container'>
-          <Link to='/' className='logo'>
-            Home
-          </Link>
+          <div className='navbar-logo'>
+          {TokenService.hasAuthToken()
+              ? this.toJobList()
+              : this.toLandingPage()
+            }
+          </div>
           {' '}
           <Link to='/joblist' className='joblist'>
             Job List

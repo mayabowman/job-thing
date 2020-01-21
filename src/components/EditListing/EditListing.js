@@ -1,6 +1,7 @@
 import React from 'react';
 import UpdateJobContext from '../../contexts/UpdateJobContext';
 import JobsApiService from '../../services/jobs-api-service';
+import TokenService from '../../services/token-service';
 
 class EditListing extends React.Component {
   constructor(props) {
@@ -28,8 +29,9 @@ class EditListing extends React.Component {
 
   updateJob = (e) => {
     e.preventDefault()
+    const userId = Number(TokenService.getUserId())
     const id = this.props.match.params.id
-    const { company, position, status, description, date_submitted } = e.target
+    const { company, position, status, description } = e.target
     let updatedJob = {}
 
     if (company.value !== '' && company.value !== null) {
@@ -48,18 +50,12 @@ class EditListing extends React.Component {
       updatedJob.description = description.value
     }
 
-    if (date_submitted.value !== '' && date_submitted.value !== null) {
-      updatedJob.date_submitted = date_submitted.value
-    }
-
     updatedJob.id = id
 
     JobsApiService.updateJob(id, updatedJob)
+    JobsApiService.getJobsForUser(userId)
       .then(data => {
-        JobsApiService.getData()
-          .then(data => {
-            this.context.setJobs(data)
-          })
+        this.context.setJobs(data)
       })
       .then(() => {
         this.props.history.push(`/jobdetails/${id}`)
@@ -70,17 +66,19 @@ class EditListing extends React.Component {
   }
 
   render() {
+    console.log('singleJob', this.context.singleJob)
+    const j = this.context.singleJob
     return (
       <div className='EditListing'>
         <h2>Edit a Job Listing</h2>
-        <form>
+        <form onSubmit={(e) => this.updateJob(e)}>
           <div>
             <label htmlFor='company'>Company</label>
             <input
               type='text'
               name='company'
               id='company'
-              placeholder={this.context.singleJob.company}
+              placeholder={j.company}
             ></input>
           </div>
           <div>
@@ -89,13 +87,13 @@ class EditListing extends React.Component {
               type='text'
               name='position'
               id='position'
-              placeholder={this.context.singleJob.position}
+              placeholder={j.position}
             ></input>
           </div>
           <div>
             <label htmlFor='status'>Status</label>
-            <select>
-              <option value={this.context.singleJob.status}></option>
+            <select defaultValue={j.status} name='status'>
+              <option value=''></option>
               <option value='Application submitted'>Application submitted</option>
               <option value='Phone Interview Scheduled'>Phone Interview Scheduled</option>
               <option value='Phone Interview Completed'>Phone Interview Completed</option>
@@ -111,12 +109,8 @@ class EditListing extends React.Component {
               type='text'
               name='description'
               id='description'
-              placeholder={this.context.singleJob.description}
+              placeholder={j.description}
             ></input>
-          </div>
-          <div>
-            <label htmlFor='date-submitted'>Date Submitted</label>
-            <input type='date' name='date-submitted'></input>
           </div>
           <div>
             <input type='submit'></input>

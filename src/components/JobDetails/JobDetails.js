@@ -49,7 +49,8 @@ class JobDetails extends React.Component{
           <h3>{this.context.singleJob.position}</h3>
           <p>Description: {this.context.singleJob.description}</p>
           <p>Status: {this.context.singleJob.status}</p>
-          <Link to={`editlisting/${this.props.match.params.id}`}>
+          <p>Date Submitted: {this.context.singleJob.date_submitted}</p>
+          <Link to={`/editlisting/${this.props.match.params.id}`}>
             <button>Edit</button>
           </Link>
           <button onClick={() => this.deleteJob(this.props.match.params.id)}>Delete</button>
