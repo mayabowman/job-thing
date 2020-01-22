@@ -72,6 +72,11 @@ class LogIn extends React.Component {
           </div>
           <input type='submit' value='Login' />
         </form>
+        <div className='error-message'>
+          <strong>
+            {this.state.error}
+          </strong>
+        </div>
       </div>
     )
   }

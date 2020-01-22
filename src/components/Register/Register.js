@@ -81,6 +81,11 @@ class Register extends React.Component {
             <p>Already have an account? <Link className='login-link' to='/login'>Login</Link></p>
           </div>
         </form>
+        <div className='error-message'>
+          <strong>
+            {this.state.error}
+          </strong>
+        </div>
       </div>
     )
   }
