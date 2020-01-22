@@ -10,6 +10,9 @@ import AddListing from './components/AddListing/AddListing';
 import EditListing from './components/EditListing/EditListing';
 import UpdateJobContext from './contexts/UpdateJobContext';
 import Footer from './components/Footer/Footer';
+import SideDrawer from './components/SideDrawer/SideDrawer';
+import Backdrop from './components/Backdrop/Backdrop';
+import PrivateRoute from './utilities/PrivateRoute';
 
 class App extends React.Component {
   static contextType = UpdateJobContext
@@ -21,8 +24,20 @@ class App extends React.Component {
       jobs: [],
       singleJob: [],
       userId: 1,
-      userData: []
+      userData: [],
+      sideDrawerOpen: false
     }
+    this.drawerToggleClickHandler = this.drawerToggleClickHandler.bind(this)
+  }
+
+  drawerToggleClickHandler = () => {
+    this.setState((prevState) => {
+      return {sideDrawerOpen: !prevState.sideDrawerOpen}
+    })
+  }
+
+  backdropClickHandler = () => {
+    this.setState({ sideDrawerOpen: false })
   }
 
   setJobs = (data) => {
@@ -82,10 +97,21 @@ class App extends React.Component {
       testContext: this.testContext
     }
 
+    let backdrop;
+
+    if (this.state.sideDrawerOpen) {
+      backdrop = <Backdrop click={this.backdropClickHandler}/>
+    };
+
     return (
       <UpdateJobContext.Provider value={contextValue}>
         <main className='App'>
-          <Nav />
+          <Nav drawerClickHandler={this.drawerToggleClickHandler}/>
+          <SideDrawer
+            show={this.state.sideDrawerOpen}
+            toggle={this.drawerToggleClickHandler}
+          />
+          {backdrop}
           <section className='content'>
             <Switch>
               <>
@@ -101,7 +127,7 @@ class App extends React.Component {
                   path='/login'
                   component={LogIn}
                 />
-                <Route
+                <PrivateRoute
                   path='/joblist'
                   component={JobList}
                 />
@@ -109,7 +135,7 @@ class App extends React.Component {
                   path='/jobdetails/:id'
                   component={JobDetails}
                 />
-                <Route
+                <PrivateRoute
                   path='/addlisting'
                   component={AddListing}
                 />

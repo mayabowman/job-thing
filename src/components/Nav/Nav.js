@@ -1,6 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import TokenService from '../../services/token-service';
+import DrawerToggleButton from '../SideDrawer/DrawerToggleButton';
+// import PrivateRoute from '../../utilities/PrivateRoute';
+import './Nav.css';
+// import JobList from '../JobList/JobList';
+// import AddListing from '../AddListing/AddListing';
 
 class Nav extends React.Component {
   handleLogoutClick = () => {
@@ -53,29 +58,35 @@ class Nav extends React.Component {
   }
 
   render() {
+
     return (
-      <nav>
-        <div className='nav-container'>
-          <div className='navbar-logo'>
-          {TokenService.hasAuthToken()
-              ? this.toJobList()
-              : this.toLandingPage()
-            }
+      <header className='navbar'>
+        <nav className='navbar-navigation' role='navigation'>
+          <div className='navbar-toggle-button'>
+            <DrawerToggleButton click={this.props.drawerClickHandler}/>
           </div>
-          {' '}
-          <Link to='/joblist' className='joblist'>
-            Job List
-          </Link>
-          {' '}
-          <Link to='/addlisting'>
-            Add Listing
-          </Link>
-          {' '}
-          {TokenService.hasAuthToken()
-            ? this.renderLogoutLink()
-            : this.renderLoginLink()}
-        </div>
-      </nav>
+            <div className='navbar-logo'>
+              {TokenService.hasAuthToken()
+                ? this.toJobList()
+                : this.toLandingPage()
+              }
+            </div>
+            <div className='spacer' />
+            <div className='navbar-nav-items'>
+            <Link to={'/joblist'} className='text-link'>
+              Job List |
+            </Link>
+            {' '}
+            <Link to={'/addlisting'} className='text-link'>
+              Add Listing
+            </Link>
+            {' '}
+            {TokenService.hasAuthToken()
+              ? this.renderLogoutLink()
+              : this.renderLoginLink()}
+          </div>
+        </nav>
+      </header>
     )
   }
 }
