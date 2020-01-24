@@ -44,7 +44,7 @@ class JobDetails extends React.Component{
 
     return (
       <div>
-        <div className='JobListing'>
+        <div className='job-details'>
           <h2>{this.context.singleJob.company}</h2>
           <h3>{this.context.singleJob.position}</h3>
           <p>Description: {this.context.singleJob.description}</p>
