@@ -2,6 +2,7 @@ import React from 'react';
 import UpdateJobContext from '../../contexts/UpdateJobContext';
 import JobsApiService from '../../services/jobs-api-service';
 import TokenService from '../../services/token-service';
+import './EditListing.css';
 
 class EditListing extends React.Component {
   constructor(props) {
@@ -71,14 +72,14 @@ class EditListing extends React.Component {
     return (
       <div className='EditListing'>
         <h2>Edit a Job Listing</h2>
-        <form onSubmit={(e) => this.updateJob(e)}>
+        <form className='edit-listing-form' onSubmit={(e) => this.updateJob(e)}>
           <div>
             <label htmlFor='company'>Company</label>
             <input
               type='text'
               name='company'
               id='company'
-              placeholder={j.company}
+              value={j.company}
             ></input>
           </div>
           <div>
@@ -87,11 +88,11 @@ class EditListing extends React.Component {
               type='text'
               name='position'
               id='position'
-              placeholder={j.position}
+              value={j.position}
             ></input>
           </div>
           <div>
-            <label htmlFor='status'>Status</label>
+            <label htmlFor='status'>Status</label><br/>
             <select defaultValue={j.status} name='status'>
               <option value=''></option>
               <option value='Application submitted'>Application submitted</option>
@@ -109,11 +110,13 @@ class EditListing extends React.Component {
               type='text'
               name='description'
               id='description'
-              placeholder={j.description}
+              value={j.description}
             ></input>
           </div>
-          <div>
-            <input type='submit'></input>
+          <div className='update__button'>
+            <button type='submit' value='Update Listing' className='update-button'>
+              Update Listing
+            </button>
           </div>
         </form>
       </div>

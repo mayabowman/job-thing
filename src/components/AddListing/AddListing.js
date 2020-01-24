@@ -2,6 +2,7 @@ import React from 'react';
 import UpdateJobContext from '../../contexts/UpdateJobContext';
 import JobsApiService from '../../services/jobs-api-service';
 import TokenService from '../../services/token-service';
+import './AddListing.css';
 
 class AddListing extends React.Component {
   constructor(props) {
@@ -42,7 +43,7 @@ class AddListing extends React.Component {
     return (
       <div className='AddListing'>
         <h2>Add a Job Listing</h2>
-        <form onSubmit={(e) => this.addJob(e)}>
+        <form className='add-listing-form' onSubmit={(e) => this.addJob(e)}>
           <div>
             <label htmlFor='company'>Company</label>
             <input
@@ -87,8 +88,10 @@ class AddListing extends React.Component {
             <label htmlFor='date_submitted'>Date Submitted</label>
             <input type='date' name='date_submitted'></input>
           </div>
-          <div>
-            <input type='submit'></input>
+          <div className='add__button'>
+            <button type='submit' value='Add Listing' className='add-button'>
+              Add Listing
+            </button>
           </div>
         </form>
       </div>
