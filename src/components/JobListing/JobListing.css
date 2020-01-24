@@ -15,6 +15,11 @@ li {
   max-width: 450px;
 }
 
+.JobListing:hover {
+  background-color: #d1d1d1;
+  border: 1px solid #e69510;
+}
+
 .JobListing:visited {
   color: black;
 }

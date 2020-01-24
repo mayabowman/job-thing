@@ -9,7 +9,6 @@ import JobDetails from './components/JobDetails/JobDetails';
 import AddListing from './components/AddListing/AddListing';
 import EditListing from './components/EditListing/EditListing';
 import UpdateJobContext from './contexts/UpdateJobContext';
-import Footer from './components/Footer/Footer';
 import SideDrawer from './components/SideDrawer/SideDrawer';
 import Backdrop from './components/Backdrop/Backdrop';
 import PrivateRoute from './utilities/PrivateRoute';
@@ -147,7 +146,6 @@ class App extends React.Component {
               </>
             </Switch>
           </section>
-          <Footer />
         </main>
       </UpdateJobContext.Provider>
     )

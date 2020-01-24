@@ -67,7 +67,6 @@ class EditListing extends React.Component {
   }
 
   render() {
-    console.log('singleJob', this.context.singleJob)
     const j = this.context.singleJob
     return (
       <div className='EditListing'>
@@ -79,7 +78,7 @@ class EditListing extends React.Component {
               type='text'
               name='company'
               id='company'
-              value={j.company}
+              defaultValue={j.company}
             ></input>
           </div>
           <div>
@@ -88,7 +87,7 @@ class EditListing extends React.Component {
               type='text'
               name='position'
               id='position'
-              value={j.position}
+              defaultValue={j.position}
             ></input>
           </div>
           <div>
@@ -110,7 +109,7 @@ class EditListing extends React.Component {
               type='text'
               name='description'
               id='description'
-              value={j.description}
+              defaultValue={j.description}
             ></input>
           </div>
           <div className='update__button'>
