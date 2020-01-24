@@ -34,6 +34,7 @@ select {
     padding: 20px;
     text-align: left;
     width: 100%;
+    max-width: 450px;
   }
 
   label {
@@ -54,6 +55,7 @@ select {
     margin-bottom: 4%;
     border: 1px solid #696969;
     padding: 5px;
+    max-width: 450px;
   }
 
   .update__button {
@@ -66,7 +68,7 @@ select {
   }
 
   .edit-listing-form {
-    padding: 10%;
+    padding: 30%;
     padding-top: 0px;
   }
 
