@@ -49,6 +49,7 @@ class LogIn extends React.Component {
           </strong>
         </div>
         <form
+          className='login-form'
           id='log-in'
           onSubmit={this.handleSubmitJwtAuth}
         >
