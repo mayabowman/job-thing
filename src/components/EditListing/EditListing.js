@@ -71,7 +71,7 @@ class EditListing extends React.Component {
     const j = this.context.singleJob
     return (
       <div className='EditListing'>
-        <h2>Edit a Job Listing</h2>
+        <h2>Edit Job Listing</h2>
         <form className='edit-listing-form' onSubmit={(e) => this.updateJob(e)}>
           <div>
             <label htmlFor='company'>Company</label>
