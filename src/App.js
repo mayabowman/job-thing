@@ -13,6 +13,7 @@ import Footer from './components/Footer/Footer';
 import SideDrawer from './components/SideDrawer/SideDrawer';
 import Backdrop from './components/Backdrop/Backdrop';
 import PrivateRoute from './utilities/PrivateRoute';
+import './App.css'
 
 class App extends React.Component {
   static contextType = UpdateJobContext

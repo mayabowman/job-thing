@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AuthApiService from '../../services/auth-api-service';
+import './Register.css';
 
 class Register extends React.Component {
   static defaultProps = {
@@ -49,9 +50,11 @@ class Register extends React.Component {
           className='registration-form'
           onSubmit={this.handleSubmit}
         >
-          <div className='form-content'>
-            <div>
-              <label htmlFor='full_name'>Name: </label>
+            <div className='register-field'>
+              <label
+                htmlFor='full_name'
+                className='register__label'
+              >Name: </label>
               <input
                 type='text'
                 id='full_name'
@@ -59,8 +62,11 @@ class Register extends React.Component {
                 placeholder='Name'
               />
             </div>
-            <div>
-              <label htmlFor='user_name'>Username: </label>
+            <div className='register-field'>
+              <label
+                htmlFor='user_name'
+                className='register__label'
+              >Username: </label>
               <input
                 type='text'
                 id='user_name'
@@ -68,18 +74,35 @@ class Register extends React.Component {
                 placeholder='Username'
               />
             </div>
-            <div>
-              <label htmlFor='password'>Password: </label>
+            <div className='register-field'>
+              <label
+                htmlFor='password'
+                className='register__label'
+              >Password: </label>
               <input
+                className='register__input'
                 type='text'
                 id='password'
                 name='password'
                 placeholder='Password'
               />
             </div>
-            <input type='submit' value='Register'/>
-            <p>Already have an account? <Link className='login-link' to='/login'>Login</Link></p>
-          </div>
+            <div className='register__password-req'>
+              <strong>
+                Password requirements:<br/>
+                Must be between 8 and 72 characters<br/>
+                Must not begin or end with a space<br/>
+                Must contain an uppercase, lowercase, number and special character
+              </strong>
+            </div>
+            <div className='register__button'>
+              <button type='submit' value='Register' className='register-button'>
+                Register
+              </button>
+            </div>
+            <div className='register-field'>
+              <p className='register-field'>Already have an account? <Link className='login-link' to='/login'>Login</Link></p>
+            </div>
         </form>
         <div className='error-message'>
           <strong>

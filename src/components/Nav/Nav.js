@@ -38,7 +38,7 @@ class Nav extends React.Component {
   toJobList() {
     return (
       <Link to={'/joblist'} className='text-link'>
-        Job Thing<span className='keep-white'>.</span>
+        Job Thing
       </Link>
     )
   }
@@ -46,7 +46,7 @@ class Nav extends React.Component {
   toLandingPage() {
     return (
       <Link to={'/'} className='text-link'>
-        Job Thing<span className='keep-white'>.</span>
+        Job Thing
       </Link>
     )
   }
