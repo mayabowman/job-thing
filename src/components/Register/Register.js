@@ -81,7 +81,7 @@ class Register extends React.Component {
               >Password: </label>
               <input
                 className='register__input'
-                type='text'
+                type='password'
                 id='password'
                 name='password'
                 placeholder='Password'
