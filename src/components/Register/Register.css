@@ -17,7 +17,7 @@ label {
 }
 
 .error-message {
-  color: #fc4d08;
+  color: red;
 }
 
 .register__password-req {
@@ -26,12 +26,12 @@ label {
   display: block;
   margin-top: 20px;
   margin: 8%;
-  color: #fc4d08;
+  color: #e69510;
 }
 
 .register__label {
   margin-bottom: 3px;
-  margin-left: 22px;
+  margin-left: 28px;
 }
 
 .registration-form {
@@ -98,7 +98,7 @@ label {
     text-align: left;
     display: block;
     margin: auto;
-    color: #fc4d08;
+    color: #e69510;
     width: 50%;
   }
 }

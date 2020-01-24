@@ -3,6 +3,7 @@ import JobListing from '../JobListing/JobListing';
 import UpdateJobContext from '../../contexts/UpdateJobContext';
 import JobsApiService from '../../services/jobs-api-service';
 import TokenService from '../../services/token-service';
+import './JobList.css';
 
 class JobList extends React.Component {
   constructor(props) {
@@ -18,7 +19,6 @@ class JobList extends React.Component {
     let userId = Number(TokenService.getUserId())
     JobsApiService.getJobsForUser(userId)
       .then(data => {
-        console.log('data', data)
         this.context.setJobs(data)
       })
       .catch(error => {
@@ -32,7 +32,6 @@ class JobList extends React.Component {
     return (
       <div>
         <h1>Jobs You've Applied For</h1>
-        <ul>
           {this.context.jobs.map(i => (
             <li key={i.id}>
               <JobListing
@@ -41,7 +40,6 @@ class JobList extends React.Component {
               />
             </li>
           ))}
-        </ul>
       </div>
     )
   }

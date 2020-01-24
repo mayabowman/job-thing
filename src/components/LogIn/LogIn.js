@@ -1,6 +1,7 @@
 import React from 'react';
 import TokenService from '../../services/token-service';
 import AuthApiService from '../../services/auth-api-service';
+import './LogIn.css'
 
 class LogIn extends React.Component {
   static defaultProps = {
@@ -42,17 +43,16 @@ class LogIn extends React.Component {
     return (
       <div className='Login'>
         <h1>Login</h1>
-
+        <div className='login__demo-creds'>
+          <strong>
+            Demo credentials: testuser / Thinkful1!
+          </strong>
+        </div>
         <form
           id='log-in'
           onSubmit={this.handleSubmitJwtAuth}
         >
-          <div className='login__username'>
-          <div className='login__demo-creds'>
-              <strong>
-                Demo credentials: testuser / Thinkful1!
-              </strong>
-            </div>
+          <div className='login-field'>
             <label htmlFor='user_name'>Username: </label>
             <input
               type='text'
@@ -61,7 +61,7 @@ class LogIn extends React.Component {
               placeholder='Username'
             ></input>
           </div>
-          <div className='login__password'>
+          <div className='login-field'>
             <label htmlFor='password'>Password: </label>
             <input
               type='password'
@@ -70,7 +70,11 @@ class LogIn extends React.Component {
               placeholder='Password'
             ></input>
           </div>
-          <input type='submit' value='Login' />
+          <div className='login__button'>
+            <button type='submit' value='Log In' className='login-button'>
+              Log In
+            </button>
+          </div>
         </form>
         <div className='error-message'>
           <strong>

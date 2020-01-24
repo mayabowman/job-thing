@@ -89,6 +89,7 @@ class Register extends React.Component {
             </div>
             <div className='register__password-req'>
               <strong>
+                <span className='error-message'>{this.state.error}</span><br/>
                 Password requirements:<br/>
                 Must be between 8 and 72 characters<br/>
                 Must not begin or end with a space<br/>
@@ -104,11 +105,6 @@ class Register extends React.Component {
               <p className='register-field'>Already have an account? <Link className='login-link' to='/login'>Login</Link></p>
             </div>
         </form>
-        <div className='error-message'>
-          <strong>
-            {this.state.error}
-          </strong>
-        </div>
       </div>
     )
   }
