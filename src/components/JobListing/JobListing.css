@@ -13,13 +13,14 @@ li {
   margin-bottom: 10px;
   padding: 10px;
   max-width: 450px;
+  background-color: #d1d1d1;
 }
 
 .JobListing:hover {
-  background-color: #d1d1d1;
+  background-color: #e69510;
   border: 1px solid #e69510;
 }
 
-.JobListing:visited {
+.joblisting-link:visited {
   color: black;
 }
