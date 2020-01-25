@@ -21,6 +21,10 @@ li {
   border: 1px solid #e69510;
 }
 
+.joblisting-link {
+  color: black;
+}
+
 .joblisting-link:visited {
   color: black;
 }
