@@ -8,6 +8,12 @@ body {
   font-weight: 100;
   text-align: center;
   text-decoration: none;
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, .5),
+      rgba(255, 255, 255, .5)
+    ),
+    url('./images/laptop1.jpg');
 }
 
 button {
