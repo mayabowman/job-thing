@@ -117,6 +117,10 @@ label {
     color: green;
     width: 50%;
   }
+
+  .Register {
+    max-width: 700px;
+  }
 }
 
 @media (min-width: 900px) {
