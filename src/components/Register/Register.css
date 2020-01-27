@@ -47,6 +47,12 @@ label {
   padding: 10px;
 }
 
+@media (min-width: 500px) {
+  .Register {
+    max-width: 300px;
+  };
+}
+
 @media (min-width: 768px) {
   header {
     position: fixed;
@@ -110,5 +116,11 @@ label {
     margin: auto;
     color: green;
     width: 50%;
+  }
+}
+
+@media (min-width: 900px) {
+  .Register {
+    max-width: 1000px;
   }
 }
