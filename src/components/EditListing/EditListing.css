@@ -18,6 +18,17 @@ select {
   padding: 5px;
 }
 
+.update-button {
+  background-color: #e69510
+}
+
+@media (min-width: 500px) {
+  .EditListing {
+    max-width: 300px;
+    margin: auto;
+  }
+}
+
 @media (min-width: 768px) {
   header {
     position: fixed;
@@ -74,6 +85,13 @@ select {
 
   .login-form {
     margin-top: 10px;
+  }
+}
+
+@media (min-width: 900px) {
+  .EditListing {
+    max-width: 1000px;
+    margin: auto;
   }
 }
 
