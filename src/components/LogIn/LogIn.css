@@ -20,13 +20,17 @@ form {
   margin-top: 15px;
 }
 
+.error-message {
+  color: red;
+}
+
 .Login {
   margin: auto;
   padding: 10px;
 }
 
-.error-message {
-  color: red;
+.login-button {
+  background-color: #e69510;
 }
 
 .login__demo-creds {

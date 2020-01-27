@@ -20,6 +20,10 @@ label {
   color: red;
 }
 
+.register-button {
+  background-color: #e69510;
+}
+
 .register__password-req {
   font-size: 14px;
   text-align: left;

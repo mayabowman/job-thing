@@ -58,7 +58,7 @@ class Nav extends React.Component {
   }
 
   render() {
-
+    const isNotLoggedIn = !TokenService.hasAuthToken();
     return (
       <header className='navbar'>
         <nav className='navbar-navigation' role='navigation'>
@@ -74,7 +74,7 @@ class Nav extends React.Component {
             <div className='spacer' />
             <div className='navbar-nav-items'>
             <Link to={'/joblist'} className='text-link'>
-              Job List |
+              Job List <span className='keep-white'>|</span>
             </Link>
             {' '}
             <Link to={'/addlisting'} className='text-link'>
@@ -84,6 +84,12 @@ class Nav extends React.Component {
             {TokenService.hasAuthToken()
               ? this.renderLogoutLink()
               : this.renderLoginLink()}
+            {isNotLoggedIn &&
+              <Link to={'/register'} className='text-link'>
+                <span className='keep-white'> | </span>
+                Register
+              </Link>
+            }
           </div>
         </nav>
       </header>

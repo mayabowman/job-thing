@@ -19,7 +19,6 @@ class AddListing extends React.Component {
     e.preventDefault()
     const userId = Number(TokenService.getUserId())
     const date = e.target.date_submitted.value
-    console.log('userId', userId)
     let newJob = {
       company: e.target.company.value,
       position: e.target.position.value,

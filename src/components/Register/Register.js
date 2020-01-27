@@ -38,7 +38,6 @@ class Register extends React.Component {
       })
       .catch(res => {
         this.setState({ error: res.error })
-        console.log('error', res.error)
       })
   };
 
