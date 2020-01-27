@@ -11,7 +11,11 @@ class Register extends React.Component {
     }
   }
 
-  state = { error: null }
+  state = {
+    password:'',
+    confirmPassword: '',
+    error: null
+  }
 
   handleRegistrationSuccess = () => {
     const { location, history } = this.props
@@ -21,9 +25,17 @@ class Register extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    const { user_name, full_name, password } = e.target
+    const { user_name, full_name, password, confirm_password } = e.target
 
-    this.setState({ error: null })
+    this.setState({
+      password: password,
+      confirmPassword: confirm_password,
+      error: null
+    })
+
+    if (this.state.password !== this.state.confirmPassword) {
+      alert('Passwords do not match')
+    }
 
     AuthApiService.postUser({
       user_name: user_name.value,
@@ -83,6 +95,19 @@ class Register extends React.Component {
                 type='password'
                 id='password'
                 name='password'
+                placeholder='Password'
+              />
+            </div>
+            <div className='register-field'>
+              <label
+                htmlFor='confirm_password'
+                className='register__label'
+              >Confirm Password: </label>
+              <input
+                className='register__input'
+                type='password'
+                id='confirm_password'
+                name='confirm_password'
                 placeholder='Password'
               />
             </div>
