@@ -25,33 +25,22 @@ class Register extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    const { user_name, full_name, password, confirm_password } = e.target
+    const { user_name, full_name, password } = e.target
 
-    this.setState({
-      password: password,
-      confirmPassword: confirm_password,
-      error: null
+    AuthApiService.postUser({
+      user_name: user_name.value,
+      full_name: full_name.value,
+      password: password.value
     })
-
-    if (this.state.password !== this.state.confirmPassword) {
-      alert('Passwords do not match')
-    } else {
-
-      AuthApiService.postUser({
-        user_name: user_name.value,
-        full_name: full_name.value,
-        password: password.value
+      .then(res => {
+        user_name.value = ''
+        full_name.value = ''
+        password.value = ''
+        this.handleRegistrationSuccess()
       })
-        .then(res => {
-          user_name.value = ''
-          full_name.value = ''
-          password.value = ''
-          this.handleRegistrationSuccess()
-        })
-        .catch(res => {
-          this.setState({ error: res.error })
-        })
-      }
+      .catch(res => {
+        this.setState({ error: res.error })
+      })
   };
 
   render() {
@@ -96,19 +85,6 @@ class Register extends React.Component {
                 type='password'
                 id='password'
                 name='password'
-                placeholder='Password'
-              />
-            </div>
-            <div className='register-field'>
-              <label
-                htmlFor='confirm_password'
-                className='register__label'
-              >Confirm Password: </label>
-              <input
-                className='register__input'
-                type='password'
-                id='confirm_password'
-                name='confirm_password'
                 placeholder='Password'
               />
             </div>
