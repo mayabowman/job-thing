@@ -35,22 +35,23 @@ class Register extends React.Component {
 
     if (this.state.password !== this.state.confirmPassword) {
       alert('Passwords do not match')
-    }
+    } else {
 
-    AuthApiService.postUser({
-      user_name: user_name.value,
-      full_name: full_name.value,
-      password: password.value
-    })
-      .then(res => {
-        user_name.value = ''
-        full_name.value = ''
-        password.value = ''
-        this.handleRegistrationSuccess()
+      AuthApiService.postUser({
+        user_name: user_name.value,
+        full_name: full_name.value,
+        password: password.value
       })
-      .catch(res => {
-        this.setState({ error: res.error })
-      })
+        .then(res => {
+          user_name.value = ''
+          full_name.value = ''
+          password.value = ''
+          this.handleRegistrationSuccess()
+        })
+        .catch(res => {
+          this.setState({ error: res.error })
+        })
+      }
   };
 
   render() {
